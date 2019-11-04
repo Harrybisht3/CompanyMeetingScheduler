@@ -33,7 +33,7 @@
                   android:onClick="@{()->viewModel.userClicksOnDate()}"
                   android:textSize="15sp"
                   android:drawableRight="@drawable/ic_triangle_down"
-                  android:layout_height="40dp"/>
+                  android:layout_height="45dp"/>
 
         <TextView android:id="@+id/text_start_time"
                   app:layout_constraintTop_toBottomOf="@+id/text_date"
@@ -47,7 +47,7 @@
                   android:onClick="@{()->viewModel.userClicksOnStartTime()}"
                   android:textSize="15sp"
                   android:drawableRight="@drawable/ic_triangle_down"
-                  android:layout_height="40dp"/>
+                  android:layout_height="45dp"/>
 
         <TextView android:id="@+id/text_end_time"
                   app:layout_constraintTop_toBottomOf="@+id/text_start_time"
@@ -61,7 +61,7 @@
                   android:textSize="15sp"
                   android:onClick="@{()->viewModel.userClicksOnEndTime()}"
                   android:drawableRight="@drawable/ic_triangle_down"
-                  android:layout_height="40dp"/>
+                  android:layout_height="45dp"/>
         <EditText android:id="@+id/edit_desc"
                   android:layout_width="match_parent"
                   app:layout_constraintTop_toBottomOf="@+id/text_end_time"
