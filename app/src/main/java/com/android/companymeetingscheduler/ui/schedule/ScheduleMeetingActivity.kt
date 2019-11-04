@@ -1,5 +1,6 @@
-package com.android.companymeetingscheduler.ui.schedule
+package com.android.companymeetings
 
+import com.android.companymeetingscheduler.ui.schedule.ScheduleMeetingViewModel
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -87,7 +88,9 @@ class ScheduleMeetingActivity : DaggerAppCompatActivity() {
                 Event.EVENT_SELECT_END_TIME -> {
                     meeting.end_time = SimpleDateFormat("HH:mm").format(cal.time).toString()
                     viewModel.data.postValue(meeting)
-                    viewModel.checkPastDate()
+                    if (viewModel.data.value?.date != "MeetingDate" && viewModel.data.value?.start_time != "Start Time") {
+                        viewModel.checkPastDate()
+                    }
                 }
             }
 
