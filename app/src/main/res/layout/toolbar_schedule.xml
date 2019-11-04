@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+    <data>
+        <import type="android.view.View"/>
+        <variable name="viewModel" type="com.android.companymeetingscheduler.ui.schedule.ScheduleMeetingViewModel"/>
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/back_arrow"
+                android:layout_width="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{()->viewModel.userClicksBack()}"
+                android:src="@drawable/ic_left_arrow"
+                android:layout_height="30dp"/>
+        <TextView
+                android:id="@+id/text_prev"
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/back_arrow"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/back_arrow"
+                android:text="@string/back"
+                android:onClick="@{()->viewModel.userClicksBack()}"
+                android:gravity="center_vertical"
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content"/>
+
+        <TextView android:id="@+id/text_meeting"
+                  android:layout_width="wrap_content"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  android:textStyle="bold"
+                  android:text="@string/schedule_meeting"
+                  android:gravity="center_vertical"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  android:textSize="15sp"
+                  android:textColor="@color/colorWhite"
+                  android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

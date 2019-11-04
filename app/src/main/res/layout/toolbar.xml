@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+    <data>
+        <import type="android.view.View"/>
+        <variable name="viewModel"
+                  type="com.android.companymeetingscheduler.ui.home.HomeViewModel"/>
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/left_arrow"
+                android:layout_width="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_left_arrow"
+                android:onClick="@{()->viewModel.onPreviousDate()}"
+                android:layout_height="30dp"/>
+        <TextView
+                android:id="@+id/text_prev"
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/left_arrow"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/left_arrow"
+                android:text="@string/prev"
+                android:onClick="@{()->viewModel.onPreviousDate()}"
+                android:gravity="center_vertical"
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content"/>
+        <ImageView
+                android:id="@+id/right_arrow" android:layout_width="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="10dp"
+                android:onClick="@{()->viewModel.onNextDate()}"
+                android:src="@drawable/ic_right_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/left_arrow"
+                android:layout_height="30dp"/>
+        <TextView android:id="@+id/text_date"
+                  android:layout_width="wrap_content"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintStart_toEndOf="@id/text_prev"
+                  app:layout_constraintEnd_toStartOf="@id/text_next"
+                  android:textStyle="bold"
+                  android:text="@{viewModel.date}"
+                  android:gravity="center_vertical"
+                  app:layout_constraintBottom_toBottomOf="@+id/text_next"
+                  android:textSize="15sp"
+                  android:textColor="@color/colorWhite"
+                  android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/text_next"
+                android:layout_width="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/right_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/right_arrow"
+                android:text="@string/next"
+                android:onClick="@{()->viewModel.onNextDate()}"
+                android:gravity="center_vertical"
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
