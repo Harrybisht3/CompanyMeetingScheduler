@@ -1,6 +1,5 @@
-package com.android.companymeetings
+package com.android.companymeetingscheduler.ui.schedule
 
-import com.android.companymeetingscheduler.ui.schedule.ScheduleMeetingViewModel
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -38,7 +37,7 @@ class ScheduleMeetingActivity : DaggerAppCompatActivity() {
         binding.viewModel = viewModel
         lifecycle.addObserver(viewModel)
         binding.lifecycleOwner = this
-        meeting = Meeting(0, "MeetingDate", "Start Time", "EndTime", listOf())
+        meeting = Meeting(0, "MeetingDate", "Start Time", "End Time", listOf())
         viewModel.navigateToDetails.observe(this, Observer {
             it.getContentIfNotHandled()?.let {
                 when (it) {
@@ -68,6 +67,9 @@ class ScheduleMeetingActivity : DaggerAppCompatActivity() {
             // Display Selected date in textbox
             meeting.date = "" + dayOfMonth + "/" + (monthOfYear + 1) + "/" + year
             viewModel.data.postValue(meeting)
+            if (viewModel.data.value?.start_time != "Start Time" && viewModel.data.value?.end_time != "End Time") {
+                viewModel.checkPastDate()
+            }
 
         }, year, month, day)
 
@@ -84,6 +86,9 @@ class ScheduleMeetingActivity : DaggerAppCompatActivity() {
                     meeting.start_time =
                         SimpleDateFormat("HH:mm").format(cal.time).toString()
                     viewModel.data.postValue(meeting)
+                    if (viewModel.data.value?.date != "MeetingDate" && viewModel.data.value?.end_time != "End Time") {
+                        viewModel.checkPastDate()
+                    }
                 }
                 Event.EVENT_SELECT_END_TIME -> {
                     meeting.end_time = SimpleDateFormat("HH:mm").format(cal.time).toString()

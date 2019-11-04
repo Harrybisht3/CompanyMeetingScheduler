@@ -37,7 +37,7 @@ class HomeActivity : DaggerAppCompatActivity() {
         list_schedule.adapter = adapter
     }
     private fun startMeetingScheduleAcivity(){
-        val intent= Intent(this,ScheduleMeetingActivity::class.java)
+        val intent= Intent(this, ScheduleMeetingActivity::class.java)
         startActivity(intent)
     }
 }
